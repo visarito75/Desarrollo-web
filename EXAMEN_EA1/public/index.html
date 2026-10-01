@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Soporte TI</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Iconos Modernos Lucide -->
+    <script src="https://unpkg.com"></script>
+
+</head>
+<body>
+
+    <!-- Encabezado con Navegación y Control de Tema -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i data-lucide="terminal"></i> Portal TI
+            </div>
+            
+            <div class="header-actions">
+                <!-- Botón de Modo Oscuro / Claro -->
+                <button id="theme-toggle" class="btn-icon" aria-label="Alternar modo oscuro">
+                    <i data-lucide="moon" id="theme-icon"></i>
+                </button>
+                
+                <button class="nav-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li class="active"><a href="#inicio"><i data-lucide="home"></i> Inicio</a></li>
+                    <li><a href="#servicios"><i data-lucide="layers"></i> Servicios</a></li>
+                    <li><a href="#soporte"><i data-lucide="life-buoy"></i> Soporte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección Hero Principal -->
+        <section id="inicio" class="hero">
+            <h1>Portal de Soporte TI</h1>
+            <p>Proyecto base de práctica. Encuentra soluciones tecnológicas rápidas y eficientes de manera centralizada.</p>
+            <a href="#soporte" class="btn-principal">
+                Crear un Ticket <i data-lucide="arrow-right"></i>
+            </a>
+        </section>
+
+        <!-- Rejilla de Servicios Mejorada con Contenedor de Icono -->
+        <section id="servicios" class="servicios-grid">
+            
+            <article class="tarjeta-servicio">
+                <div class="icono-contenedor-tarjeta">
+                    <i data-lucide="cpu"></i>
+                </div>
+                <h3>Soporte de Hardware</h3>
+                <p>Reparación, diagnóstico y mantenimiento preventivo para computadoras de escritorio y laptops corporativas.</p>
+            </article>
+
+            <article class="tarjeta-servicio">
+                <div class="icono-contenedor-tarjeta">
+                    <i data-lucide="download-cloud"></i>
+                </div>
+                <h3>Instalación de Software</h3>
+                <p>Configuración de sistemas operativos, paquetería de oficina y herramientas de software autorizadas.</p>
+            </article>
+
+            <article class="tarjeta-servicio">
+                <div class="icono-contenedor-tarjeta">
+                    <i data-lucide="wifi"></i>
+                </div>
+                <h3>Conectividad y Redes</h3>
+                <p>Resolución de problemas de acceso a internet, configuración de VPN, telefonía IP y redes locales.</p>
+            </article>
+
+            <article class="tarjeta-servicio">
+                <div class="icono-contenedor-tarjeta">
+                    <i data-lucide="shield-alert"></i>
+                </div>
+                <h3>Cuentas y Accesos</h3>
+                <p>Gestión de contraseñas, desbloqueo de usuarios, accesos a correos corporativos y plataformas internas.</p>
+            </article>
+
+        </section>
+
+        <!-- Formulario de Solicitud de Soporte Técnico -->
+        <section id="soporte" class="formulario-seccion">
+            <h2><i data-lucide="file-text"></i> Solicitud de Soporte</h2>
+            <p class="ayuda-texto" style="margin-bottom: 2rem;">Completa los campos para generar una simulación de ticket local.</p>
+            
+            <form id="soporte-form">
+                <fieldset>
+                    <legend>Información de la Solicitud</legend>
+
+                    <div class="grupo-campo">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez">
+                        <span class="ayuda-texto">Mínimo 3 caracteres.</span>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="correo">Correo Electrónico:</label>
+                        <input type="email" id="correo" name="correo" required placeholder="correo@empresa.com">
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="tipo-soporte">Tipo de Soporte:</label>
+                        <select id="tipo-soporte" name="tipo-soporte" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="hardware">Fallo de Hardware</option>
+                            <option value="software">Problema de Software</option>
+                            <option value="redes">Problemas de Red</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="descripcion">Descripción del Problema:</label>
+                        <textarea id="descripcion" name="descripcion" required placeholder="Detalla el inconveniente que estás presentando..."></textarea>
+                        <span class="ayuda-texto">Entre 10 y 500 caracteres.</span>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn-enviar">
+                    <span>Enviar Solicitud</span> <i data-lucide="send"></i>
+                </button>
+                
+                <div id="mensaje-simulacion" style="display: none;"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Portal TI de práctica. No registra tickets reales.</p>
+    </footer>
+
+    <!-- Inicializar JavaScript -->
+   <script src="assets/js/ui.js">
+</body>
+</html>

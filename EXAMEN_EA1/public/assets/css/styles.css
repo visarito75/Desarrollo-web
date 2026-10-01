@@ -1,0 +1,434 @@
+/* ==========================================================================
+   1. VARIABLES DE DISEÑO (Soporta Temas Claro y Oscuro de forma Nativa)
+   ========================================================================== */
+:root {
+    /* --- Modo Claro (Predeterminado) --- */
+    --color-fondo: #f8fafc;          /* Azul grisáceo muy claro */
+    --color-superficie: #ffffff;     /* Blanco puro para tarjetas */
+    --color-primario: #0f172a;       /* Slate 900 (Textos principales y cabeceras) */
+    --color-secundario: #2563eb;     /* Azul Eléctrico Moderno (Acentos) */
+    --color-gradiente: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    --color-texto: #334155;          /* Slate 700 (Cuerpo de texto) */
+    --color-texto-mutado: #64748b;    /* Slate 500 (Textos secundarios) */
+    --color-borde: #e2e8f0;          /* Gris de división claro */
+    --color-input-bg: #f8fafc;       /* Fondo de inputs */
+    --color-foco: #3b82f6;           /* Color del borde al seleccionar un campo */
+    
+    /* Estructuras Globales */
+    --radio-tarjeta: 14px;
+    --radio-input: 10px;
+    --sombra-sutil: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --sombra-moderna: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+    --transicion: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  transform 0.2s ease, 
+                  box-shadow 0.2s ease;
+}
+
+/* --- Sobreescritura para el Modo Oscuro --- */
+[data-theme="dark"] {
+    --color-fondo: #090d16;          /* Fondo oscuro profundo */
+    --color-superficie: #121824;     /* Gris azulado oscuro para contenedores */
+    --color-primario: #f8fafc;       /* Cambia el texto principal a blanco */
+    --color-secundario: #3b82f6;     /* Azul brillante */
+    --color-gradiente: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+    --color-texto: #cbd5e1;          /* Texto gris claro */
+    --color-texto-mutado: #94a3b8;    /* Texto secundario atenuado */
+    --color-borde: #1e293b;          /* Bordes oscuros integrados */
+    --color-input-bg: #1e293b;       /* Inputs oscuros */
+    --color-foco: #60a5fa;
+}
+
+/* ==========================================================================
+   2. REGLAS GENERALES Y RESETEO DE ESTILOS
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: var(--transicion);
+}
+
+/* Ajuste proporcional para iconos incrustados */
+.lucide {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   3. CABECERA, ACCESIBILIDAD Y ENLACES (GLASSMORPHISM)
+   ========================================================================== */
+header {
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] header {
+    background-color: rgba(18, 24, 36, 0.95);
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ffffff;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Botones Iconográficos */
+.btn-icon {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radio-input);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transicion);
+}
+
+.btn-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.nav-menu a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radio-input);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transicion);
+}
+
+.nav-menu a:hover, .nav-menu li.active a {
+    color: #ffffff;
+    background-color: rgba(37, 99, 235, 0.2);
+}
+
+/* Enfoque accesible por teclado */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--color-secundario);
+    outline-offset: 2px;
+}
+
+/* Menú Móvil Colapsable */
+@media (max-width: 767px) {
+    .nav-toggle {
+        display: inline-flex;
+    }
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #121824;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--color-borde);
+    }
+    .nav-menu.is-open {
+        display: block;
+    }
+    .nav-menu ul {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   4. ESTRUCTURA DE CONTENIDOS (Hero, Rejilla, Formularios)
+   ========================================================================== */
+main {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4.5rem 1.5rem;
+    background: var(--color-gradiente);
+    color: #ffffff;
+    border-radius: var(--radio-tarjeta);
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.25);
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    max-width: 650px;
+    margin: 0 auto 2rem;
+}
+
+.btn-principal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #ffffff;
+    color: #2563eb;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radio-input);
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: var(--sombra-sutil);
+    transition: var(--transicion);
+}
+
+.btn-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Grid de Servicios (CSS Grid) */
+.servicios-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+    .servicios-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Estilo Individual de Tarjetas */
+article[class*="tarjeta"] {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-tarjeta);
+    padding: 2rem;
+    box-shadow: var(--sombra-sutil);
+    transition: var(--transicion);
+}
+
+article[class*="tarjeta"]:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-moderna);
+}
+
+.icono-tarjeta {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--color-secundario);
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.tarjeta-servicio h3 {
+    font-size: 1.25rem;
+    color: var(--color-primario);
+    margin-bottom: 0.6rem;
+}
+
+.tarjeta-servicio p {
+    color: var(--color-texto-mutado);
+    font-size: 0.95rem;
+}
+
+/* Sección del Formulario Modernizado */
+.formulario-seccion {
+    background-color: var(--color-superficie);
+    padding: 2.5rem;
+    border-radius: var(--radio-tarjeta);
+    box-shadow: var(--sombra-sutil);
+    border: 1px solid var(--color-borde);
+    margin-bottom: 4rem;
+}
+
+.formulario-seccion h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-primario);
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-titulo-formulario {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-secundario);
+    margin: 1.5rem 0 1rem 0;
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 0.5rem;
+}
+
+fieldset {
+    border: none;
+}
+
+.grupo-campo {
+    margin-bottom: 1.5rem;
+}
+
+.grupo-doble-columna {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .grupo-doble-columna { grid-template-columns: repeat(2, 1fr); }
+}
+
+label {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--color-primario);
+}
+
+label span {
+    color: #ef4444; /* Asterisco obligatorio */
+    margin-left: 2px;
+}
+
+/* Componentes de Entrada */
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-input);
+    font-size: 0.95rem;
+    background-color: var(--color-input-bg);
+    color: inherit;
+    transition: var(--transicion);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--color-foco);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    background-color: var(--color-superficie);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.ayuda-texto {
+    font-size: 0.82rem;
+    color: var(--color-texto-mutado);
+    margin-top: 0.4rem;
+    display: block;
+}
+
+/* Botón de Validación e Interacción */
+.btn-enviar {
+    width: 100%;
+    background: var(--color-gradiente);
+    color: #ffffff;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+border-radius: var(--radio-input);
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+transition: var(--transicion);
+}
+.btn-enviar:hover {
+transform: translateY(-1px);
+box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+}
+/* Alertas de Notificación Dinámicas */
+.alerta-exito {
+background-color: rgba(34, 197, 94, 0.1);
+color: #22c55e;
+padding: 1.25rem;
+border-radius: var(--radio-input);
+margin-top: 1.5rem;
+border: 1px solid rgba(34, 197, 94, 0.2);
+font-size: 0.95rem;
+}
+[data-theme="dark"] .alerta-exito {
+background-color: rgba(34, 197, 94, 0.05);
+color: #4ade80;
+}
+/* Footer de Página */
+footer {
+background-color: #0f172a;
+color: #64748b;
+text-align: center;
+padding: 2.5rem 1.5rem;
+font-size: 0.9rem;
+border-top: 1px solid var(--color-borde);
+}

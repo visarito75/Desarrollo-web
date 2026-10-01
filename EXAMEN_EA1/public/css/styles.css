@@ -1,0 +1,376 @@
+/* =========================================
+   DEFINICIÓN DE VARIABLES Y ESTILOS MODERNOS
+========================================= */
+:root {
+    /* Paleta de colores vibrante y profesional */
+    --color-primario: #0f172a;       /* Slate 900 (Fondo ultra oscuro) */
+    --color-secundario: #2563eb;     /* Blue 600 (Acento principal) */
+    --color-gradiente: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    --color-fondo: #f8fafc;          /* Slate 50 (Fondo suave de página) */
+    --color-tarjeta: #ffffff;
+    --color-texto: #334155;          /* Slate 700 */
+    --color-texto-mutado: #64748b;    /* Slate 500 */
+    --color-blanco: #ffffff;
+    
+    /* Efectos y curvas modernos */
+    --radio-tarjeta: 16px;
+    --radio-boton: 12px;
+    --sombra-sutil: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --sombra-moderna: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+    --transicion: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reseteo y Optimización */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Encabezado con efecto de desenfoque de cristal (Glassmorphism) */
+header {
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--color-blanco);
+    padding: 1.25rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    background: linear-gradient(to right, #ffffff, #93c5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-menu {
+    display: none;
+    list-style: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    background-color: var(--color-primario);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu.is-open {
+    display: flex;
+    animation: slideDown 0.3s ease forwards;
+}
+
+.nav-menu a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radio-boton);
+    transition: var(--transicion);
+}
+
+.nav-menu a:hover, .nav-menu li.active a {
+    color: var(--color-blanco);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.nav-toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-blanco);
+    padding: 0.6rem 0.9rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: var(--radio-boton);
+    transition: var(--transicion);
+}
+
+.nav-toggle:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Accesibilidad de Enfoque Mejorada */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--color-secundario);
+    outline-offset: 3px;
+}
+
+/* Estructura Principal */
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Hero Section con Gradiente Tecnológico */
+.hero {
+    text-align: center;
+    padding: 4rem 1.5rem;
+    background: var(--color-gradiente);
+    color: var(--color-blanco);
+    border-radius: var(--radio-tarjeta);
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.3);
+}
+
+.hero h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+}
+
+.btn-principal {
+    display: inline-block;
+    background-color: var(--color-blanco);
+    color: var(--color-secundario);
+    padding: 0.85rem 2rem;
+    border-radius: var(--radio-boton);
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    transition: var(--transicion);
+}
+
+.btn-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: var(--color-blanco);
+}
+
+/* Grid de Servicios */
+.servicios-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    margin-bottom: 4rem;
+}
+
+/* Tarjetas Estilo Dashboard */
+article[class*="tarjeta"] {
+    background-color: var(--color-tarjeta);
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radio-tarjeta);
+    padding: 2rem;
+    box-shadow: var(--sombra-sutil);
+    transition: var(--transicion);
+}
+
+article[class*="tarjeta"]:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-moderna);
+    border-color: #cbd5e1;
+}
+
+.tarjeta-servicio h3 {
+    color: var(--color-primario);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+}
+
+.tarjeta-servicio p {
+    color: var(--color-texto-mutado);
+    font-size: 0.95rem;
+}
+
+/* Formulario de Solicitud de Vanguardia */
+.formulario-seccion {
+    background-color: var(--color-tarjeta);
+    padding: 2.5rem;
+    border-radius: var(--radio-tarjeta);
+    box-shadow: var(--sombra-sutil);
+    border: 1px solid #e2e8f0;
+    margin-bottom: 4rem;
+}
+
+.formulario-seccion h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    margin-bottom: 1.5rem;
+}
+
+.grupo-campo {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--color-primario);
+}
+
+/* Elementos de entrada estilizados */
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radio-boton);
+    font-size: 0.95rem;
+    background-color: #f8fafc;
+    color: var(--color-primario);
+    transition: var(--transicion);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    background-color: var(--color-blanco);
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.ayuda-texto {
+    font-size: 0.8rem;
+    color: var(--color-texto-mutado);
+    margin-top: 0.4rem;
+}
+
+/* Componente de Alerta Minimalista */
+.alerta-exito {
+    background-color: #f0fdf4;
+    color: #166534;
+    padding: 1.25rem;
+    border-radius: var(--radio-boton);
+    margin-top: 1.5rem;
+    border: 1px solid #bbf7d0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(22, 101, 52, 0.05);
+}
+
+/* Botón de Envío del Formulario */
+.formulario-seccion button[type="submit"] {
+    width: 100%;
+    background: var(--color-gradiente);
+    color: var(--color-blanco);
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radio-boton);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    transition: var(--transicion);
+}
+
+.formulario-seccion button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Footer elegante */
+footer {
+    background-color: var(--color-primario);
+    color: #94a3b8;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Animaciones */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE)
+========================================= */
+@media (min-width: 768px) {
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-menu {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        width: auto;
+        padding: 0;
+        background-color: transparent;
+        border: none;
+    }
+
+    .servicios-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .hero {
+        padding: 6rem 2rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .servicios-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    main {
+        padding: 3rem 2rem;
+    }
+}
