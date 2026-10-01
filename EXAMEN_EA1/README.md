@@ -1,7 +1,7 @@
 # Portal TI EA1
 
-- Código y nombre:
-- Curso y sección:
+- Código y nombre:VICTOR SANCHEZ RODRIGUEZ
+- Curso y sección: DESARROLLO DE ENTORNOS WEB | 2V MIX | 4129-1115 |
 - Repositorio:
 - Pull Request:
 - Preview:
