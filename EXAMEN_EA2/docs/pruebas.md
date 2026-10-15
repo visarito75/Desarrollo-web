@@ -16,10 +16,4 @@ Capturas en `docs/evidencias/`. **Antes de entregar, repite las pruebas tú y re
 | P09 | Revocar y volver a elegir | No crece historial; no se borra lo anterior | Tras rechazar, elegir otro servicio y enviar: sigue en 2 eventos (no se borra el historial). Al volver a aceptar y elegir: 3 eventos | Aprobado | consola |
 | P10 | 320, 768, 1440 px, teclado y zoom 200 % | Contenido operable, sin recorte de página | scrollWidth = ancho del viewport en 320, 768, 1440 y 640 px (zoom 200 % de 1280); sin scroll horizontal de página. Tab recorre enlace de salto, menú, filtro y botones con foco visible (outline) | Aprobado | 320.png, 768.png, 1440.png, zoom200_640.png |
 | P11 | Reducir movimiento y cambiar estado | Confirmación visible sin animación | Con `prefers-reduced-motion: reduce`: animation `none`, transform `none`, opacity 1; el texto "Estado actualizado…" sigue visible con fondo y borde | Aprobado | P11_reduced.png |
-| P12 | Repo: https://github.com/visarito75/Desarrollo-web
-PR: https://github.com/visarito75/Desarrollo-web/pull/1
-Preview: https://desarrollo-web-examenea2-git-release-ea2-visarito75.vercel.app/
-SHA Preview: 8427c3cae24fe81816a82bb1d08a4f4eee8e7bc7
-Producción: https://desarrollo-web-examenea2.vercel.app/
-SHA Producción: 05f741fb09b2c07188bcd391805de4467d5a8d0e
-Nota: el merge del PR #1 creó el commit 04cafd1; luego se actualizó docs/pruebas.md (P12) en main, commit 05f741f, que es el que está en producción.
+| P12 | | P12 | Preview/producción y SHA | Versión correspondiente y URLs accesibles | Preview https://desarrollo-web-examenea2-git-release-ea2-visarito75.vercel.app/ (SHA 8427c3c, pública sin login). Merge del PR #1 (04cafd1) → producción https://desarrollo-web-examenea2.vercel.app/. SHA final de producción registrado en Aula Virtual | Aprobado | PR #1, comentario de Vercel |
