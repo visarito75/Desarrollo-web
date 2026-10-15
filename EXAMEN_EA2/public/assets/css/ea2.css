@@ -1,0 +1,25 @@
+.ea2-controles { display: grid; gap: 1rem; grid-template-columns: minmax(0,1fr); }
+.ea2-controles > .campo { min-width: 0; }
+#lista-auditoria { overflow-wrap: anywhere; }
+@media (min-width: 768px) { .ea2-controles { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+/* R3 implementado abajo: animación de .ea2-actualizada con reduced motion.
+   El mensaje sigue visible si se reduce el movimiento. */
+
+/* R3: confirmación breve del cambio de estado (fondo + leve desplazamiento). */
+.ea2-actualizada {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-left: 4px solid var(--verde);
+  background: #eef9d2;
+  color: var(--verde);
+  font-weight: 600;
+  animation: ea2-confirmar 600ms ease-out 1;
+}
+@keyframes ea2-confirmar {
+  from { opacity: 0.4; transform: translateY(-6px); background: var(--lima); }
+  to   { opacity: 1;   transform: translateY(0);    background: #eef9d2; }
+}
+/* Movimiento reducido: sin animación; el mensaje y su estilo siguen visibles. */
+@media (prefers-reduced-motion: reduce) {
+  .ea2-actualizada { animation: none; transform: none; opacity: 1; }
+}
