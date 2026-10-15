@@ -20,20 +20,21 @@ en protección de rama o ruleset. El workflow solo no impone esa restricción.
 
 Entrega: ZIP sin .git/node_modules/.env, repo, PR, Preview, producción, SHA de cada despliegue.
 ## Datos de entrega
-- **Autor:** ___ (código ___, sección ___)
+- **Autor:** VICTOR SEGUNDO SANCHEZ RODRIGUEZ (código 2017520602, sección ___)
 - **Base recibida:** Nova_EA2_Base_Alumno (interfaz de la semana 5 con los controles y listeners de EA2 ya conectados).
 - **Cambios propios:**
   - `public/assets/js/ea2-logica.js`: se implementaron `filtrarServicios` (R1), `validarUrgencia` (R2), `cambiarEstado` (R3) y `registrarEvento` (R4).
   - `public/assets/css/ea2.css`: animación `ea2-confirmar` para `.ea2-actualizada` (600 ms); con `prefers-reduced-motion: reduce` se quita el movimiento y el mensaje sigue visible.
   - `public/assets/js/ea2-ui.js`: solo se cambió el texto del rechazo (se quitó "R3 debe estar implementado" porque ya está hecho).
-  - `tests/ea2-logica.test.mjs` (nuevo): pruebas unitarias de las 4 funciones; `package.json` → `npm test` ahora también las ejecuta.
+  - `tests/ea2-logica.test.mjs` (nuevo): pruebas unitarias de las 4 funciones; `npm test` ahora también las ejecuta.
   - `docs/pruebas.md` completado y capturas en `docs/evidencias/`.
-- **Herramientas y uso de IA:** VS Code, Node.js 22, Chromium. Me apoyé en Claude (asistente de IA) para redactar las funciones, las pruebas unitarias y la prueba en navegador. Revisé y probé el código y puedo explicarlo. La parte teórica la resolví sin IA.
-- **Repo:** ___
-- **PR (release/ea2 → main):** ___
-- **Preview / SHA:** ___ / ___
-- **Producción / SHA:** ___ / ___
-- **Incidencias externas:** ninguna / ___
+  - `.github/workflows/calidad-ea2.yml` (raíz del repo): checks del PR dentro de `EXAMEN_EA2`.
+- **Herramientas y uso de IA:** VS Code/GitHub web, Node.js 22, Chromium, Vercel. Me apoyé en Claude (asistente de IA) para redactar las funciones, las pruebas unitarias y la prueba en navegador. Revisé y probé el código y puedo explicarlo. La parte teórica la resolví sin IA.
+- **Repo:** https://github.com/visarito75/Desarrollo-web
+- **PR (release/ea2 → main):** https://github.com/visarito75/Desarrollo-web/pull/1
+- **Preview / SHA:** ver comentario de Vercel en el PR #1
+- **Producción:** https://desarrollo-web-examenea2.vercel.app (SHA en la entrega de Aula Virtual)
+- **Incidencias externas:** El código se subió primero a main por error desde la web; luego se creó release/ea2 y el PR #1. Vercel se conectó después de abrir el PR.
 
 ## Ejecución
 `npm run dev` → http://127.0.0.1:5500 · `npm run check:project` · `npm test` (servidor + lógica EA2).
